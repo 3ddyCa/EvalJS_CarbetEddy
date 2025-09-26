@@ -96,11 +96,28 @@ const usersXeno = [{
 ];
 
 //------Tableau principal----------
+// Je ne suis pas sûr d'avoir compris si il faut push les tableaux ou merge tout les listes en une seule
 
+//version avec plusieurs listes dans une liste
 const tabData = []
 tabData.push(usersHuman);
 tabData.push(usersPet);
 tabData.push(usersXeno);
+
+//version avec les trois listes mergés dans tabData
+// const tabData = []
+// for(let i = 0 ; i<usersHuman.length , i++){
+//     tabData.push(usersHuman[i]);
+// }
+// for(let i = 0 ; i<usersPet.length , i++){
+//     tabData.push(usersPet);
+// }
+// for(let i = 0 ; i<usersXeno.length , i++){
+//     tabData.push(usersXeno);
+// }
+
+
+
 
 //---------Fonctions-------------
 
@@ -119,6 +136,7 @@ function cardHuman(objet){
     article.appendChild(image);
     article.appendChild(parag);
     article.classList.add("card");
+    //J'ai rajouté un animation sur les cars parce que j'ai finit plus tôt
     article.setAttribute("data-aos","fade-right");
     article.setAttribute("data-aos-offset","200");
     article.setAttribute("data-aos-duration" , "1000");
@@ -126,9 +144,11 @@ function cardHuman(objet){
     article.setAttribute("data-aos-mirror","true");
     article.setAttribute("data-aos-once","false");
     article.setAttribute("data-aos-anchor-placement","left-right");
+    //log d'information console pour desactiver basculer LOGS en "false"
     if(LOGS == true){
         console.log("card human : " + objet.name + " Faite");
     }
+    //log d'information console pour desactiver basculer LOGS en "false"
     return article;
 };
 
@@ -147,6 +167,7 @@ function cardPet(objet){
     article.appendChild(image);
     article.appendChild(parag);
     article.classList.add("card");
+    //J'ai rajouté un animation sur les cars parce que j'ai finit plus tôt
     article.setAttribute("data-aos","fade-right");
     article.setAttribute("data-aos-offset","200");
     article.setAttribute("data-aos-duration" , "1000");
@@ -154,9 +175,11 @@ function cardPet(objet){
     article.setAttribute("data-aos-mirror","true");
     article.setAttribute("data-aos-once","false");
     article.setAttribute("data-aos-anchor-placement","left-right");
+    //log d'information console pour desactiver basculer LOGS en "false"
     if(LOGS == true){
         console.log("card pet : "+objet.name+" Faite");
     }
+    //log d'information console pour desactiver basculer LOGS en "false"
     return article;
 };
 
@@ -175,6 +198,7 @@ function cardXeno(objet){
     article.appendChild(image);
     article.appendChild(parag);
     article.classList.add("card");
+    //J'ai rajouté un animation sur les cars parce que j'ai finit plus tôt
     article.setAttribute("data-aos","fade-right");
     article.setAttribute("data-aos-offset","200");
     article.setAttribute("data-aos-duration" , "1000");
@@ -182,13 +206,17 @@ function cardXeno(objet){
     article.setAttribute("data-aos-mirror","true");
     article.setAttribute("data-aos-once","false");
     article.setAttribute("data-aos-anchor-placement","left-right");
+    //log d'information console pour desactiver basculer LOGS en "false"
     if(LOGS == true){
         console.log("card xeno : "+ objet.name +" Faite");
     }
+    //log d'information console pour desactiver basculer LOGS en "false"
     return article;
 };
 
-function isDefined(input){
+//fonction qui renvoie une erreur pour le try catch si le type de l'objet n'existe pas 
+
+function typeExists(input){
     const type = ["humain", "animal de compagnie", "Xeno"];
     let isMatch = false;
     for(let i = 0 ; i<type.length ; i++){
@@ -207,31 +235,39 @@ function profil(list){
     const cardList = [];
     for(let i = 0 ; i < list.length ; i++){
         try{
-            isDefined(list[i].type);
+            typeExists(list[i].type);
             switch(list[i].type){
                 case "humain" :
                     cardList.push(cardHuman(list[i]));
+                    //log d'information console pour desactiver basculer LOGS en "false"
                     if(LOGS == true){
                         console.log("ajout de card human : "+list[i].name+" à cardlist");
                     }
+                    //log d'information console pour desactiver basculer LOGS en "false"
                     break;
                 case "animal de compagnie" :
                     cardList.push(cardPet(list[i]));
+                    //log d'information console pour desactiver basculer LOGS en "false"
                     if(LOGS == true){
                         console.log("ajout de card pet : "+list[i].name+" à cardlist");
                     }
+                    //log d'information console pour desactiver basculer LOGS en "false"
                     break;
                 case "Xeno" :
                     cardList.push(cardXeno(list[i]));
+                    //log d'information console pour desactiver basculer LOGS en "false"
                     if(LOGS == true){
                         console.log("ajout de card xeno : "+list[i].name+" à cardlist");
                     }
+                    //log d'information console pour desactiver basculer LOGS en "false"
                     break;
 
                 default:
+                    //log d'information console pour desactiver basculer LOGS en "false"
                     if(LOGS == true){
                         console.log("finit");
-                    }                
+                    }
+                    //log d'information console pour desactiver basculer LOGS en "false"                
                     break;
             }
         }catch(e){
@@ -245,13 +281,16 @@ function profilAll(sqList){
     const cardTab = [];
     const profils = document.querySelector(".profils");
     for(let i = 0 ; i<sqList.length; i++){
+    //Avec la deuxième version de tabData, il n'y a besoin que d'une seule boucle pour traiter les informations du tableau donc pas de variable stop pour enregistrer les tableaux successifs
         let stop = profil(sqList[i]);
         for(let j = 0 ; j<stop.length; j++){           
             cardTab.push(stop[j]);
         }
+        //log d'information console pour desactiver basculer LOGS en "false"
         if(LOGS == true){
             console.log(cardTab);
         }
+        //log d'information console pour desactiver basculer LOGS en "false"
     }
     for(let i = 0 ; i<cardTab.length; i++){
         profils.appendChild(cardTab[i]);
@@ -282,6 +321,8 @@ current.bindPopup("Je suis ici !");
 
 };
 
+//Fonction pour réunir les différents tableaux tabData dans un seul grand tableau pour la première version sans merge, sqList vaux pour "square liste" vu que c'est une liste en 2D
+
 function groupList(sqList){
     const markers = [];
     for(let i = 0 ; i<sqList.length; i++){
@@ -289,27 +330,33 @@ function groupList(sqList){
         for(let j = 0 ; j<stop.length; j++){           
             markers.push(stop[j]);
         }
-
     }
+    //log d'information console pour desactiver basculer LOGS en "false"
     if(LOGS == true){
         console.log("Profils stockés pour création de marqueurs :\n", markers);
     }
+    //log d'information console pour desactiver basculer LOGS en "false"
 
     return markers;
 }
 
-function popAllMarkers(sqList){
+//Fonction qui prends en entrée la liste et qui générère des marqueurs pour toutes les entrées des sous listes sqList vaux pour "square liste" vu que c'est une liste en 2D
+
+function markerProfilAll(sqList){
     const markers = groupList(sqList)
     for(let i = 0 ; i<markers.length; i++){
+        //J'ai mis un timer pour faire un effet visible de pop mais ça n'a pas l'air de marcher
         setTimeout(() => {
             markerProfil(markers[i]);
+            //log d'information console pour desactiver basculer LOGS en "false"
             if(LOGS == true){
                 console.log("pop");
             }
+            //log d'information console pour desactiver basculer LOGS en "false"
         },100);
     }
 }
 
-popAllMarkers(tabData);
+markerProfilAll(tabData);
 //___
 
