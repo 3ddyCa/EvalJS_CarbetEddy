@@ -47,6 +47,7 @@ i {
     display: flex;
     flex-direction: column;
     align-items: center;
+
     /* animation : AnimationCard 1000ms ; */
 }
 
@@ -86,13 +87,17 @@ main {
     width: fit-content;
     text-align: center;
     padding: 1rem;
-    border: 3px solid grey;
+    border: 3px solid rgb(100, 90, 89);
+    background-color:rgb(230, 226, 222);
     margin:0 0.5rem;
+    border-radius:0.3em;
 }
 
 .card img {
     width: 250px;
+    border-radius:0.2em;
     margin: 1rem 0;
+
 }
 
     /* CSS LEAFLET */

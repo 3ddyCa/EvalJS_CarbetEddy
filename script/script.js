@@ -123,8 +123,11 @@ function cardHuman(objet){
     article.setAttribute("data-aos-offset","200");
     article.setAttribute("data-aos-duration" , "1000");
     article.setAttribute("data-aos-easing","ease-in-out");
+    article.setAttribute("data-aos-mirror","true");
+    article.setAttribute("data-aos-once","false");
+    article.setAttribute("data-aos-anchor-placement","left-right");
     if(LOGS == true){
-        console.log("card human : "+objet.name+" Faite");
+        console.log("card human : " + objet.name + " Faite");
     }
     return article;
 };
@@ -144,6 +147,13 @@ function cardPet(objet){
     article.appendChild(image);
     article.appendChild(parag);
     article.classList.add("card");
+    article.setAttribute("data-aos","fade-right");
+    article.setAttribute("data-aos-offset","200");
+    article.setAttribute("data-aos-duration" , "1000");
+    article.setAttribute("data-aos-easing","ease-in-out");
+    article.setAttribute("data-aos-mirror","true");
+    article.setAttribute("data-aos-once","false");
+    article.setAttribute("data-aos-anchor-placement","left-right");
     if(LOGS == true){
         console.log("card pet : "+objet.name+" Faite");
     }
@@ -165,6 +175,13 @@ function cardXeno(objet){
     article.appendChild(image);
     article.appendChild(parag);
     article.classList.add("card");
+    article.setAttribute("data-aos","fade-right");
+    article.setAttribute("data-aos-offset","200");
+    article.setAttribute("data-aos-duration" , "1000");
+    article.setAttribute("data-aos-easing","ease-in-out");
+    article.setAttribute("data-aos-mirror","true");
+    article.setAttribute("data-aos-once","false");
+    article.setAttribute("data-aos-anchor-placement","left-right");
     if(LOGS == true){
         console.log("card xeno : "+ objet.name +" Faite");
     }
